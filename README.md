@@ -108,21 +108,24 @@ This repository is my implementation of ML-Quiz-3DMedImg.
 We achieve the following performance on the provided ML-Quiz-3DMedImg data
 
 1. Segmentation
-```json
-"mean": {
-    "(1, 2)": {
-        "Dice": 0.9190607778603967,
-        ...
-    },
-    "2": {
-        "Dice": 0.6168275198643545,
-        ...
+    ```json
+    "mean": {
+        "(1, 2)": {
+            "Dice": 0.9190607778603967,
+            ...
+        },
+        "2": {
+            "Dice": 0.6168275198643545,
+            ...
+        }
     }
-}
-```
+    ```
 
 2. Classification
 
+    ```json
+    Yayy! New best F1 macro: 0.4909
+    ```
 
 ## Inference
 

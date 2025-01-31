@@ -16,14 +16,14 @@ This repository is my implementation of ML-Quiz-3DMedImg.
     conda activate nnunet
     ```
 
-2. Install nnUNet with additional classification head.
+2. Install [modified nnUNet](https://github.com/cnyanhao/nnUNet.git).
     ```bash
     git clone https://github.com/cnyanhao/nnUNet.git
     cd nnUNet
     pip install -e .
     ```
 
-3. Install dynamic-network-architectures modified to add additional classification head besides encoder and decoder of UNet (which replace the previous install library).
+3. Install [modified dynamic-network-architectures](https://github.com/cnyanhao/dynamic-network-architectures.git) (which replace the previously install library).
     ```bash
     git clone https://github.com/cnyanhao/dynamic-network-architectures.git
     cd dynamic-network-architectures

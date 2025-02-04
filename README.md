@@ -16,27 +16,24 @@ This repository is my implementation of ML-Quiz-3DMedImg.
     conda activate nnunet
     ```
 
-2. Install [modified nnUNet](https://github.com/cnyanhao/nnUNet.git).
+2. Install modified nnUNet:
     ```bash
-    git clone https://github.com/cnyanhao/nnUNet.git
     cd nnUNet
     pip install -e .
     ```
 
-3. Install [modified dynamic-network-architectures](https://github.com/cnyanhao/dynamic-network-architectures.git) (which replace the previously install library).
+3. Install modified dynamic-network-architectures:
     ```bash
-    git clone https://github.com/cnyanhao/dynamic-network-architectures.git
     cd dynamic-network-architectures
     pip install -e .
     ```
 
-4. Install nibabel for label cleaning
+4. Install nibabel for label cleaning:
     ```bash
     pip install nibabel
     ```
 
-5. Set environment variables. Add the following to `.bashrc` file
-
+5. Set environment variables. Add the following to `.bashrc` file:
     ```bash
     export nnUNet_raw="~/Projects/ML-Quiz-3DMedImg/nnUNetData/nnUNet_raw"
     export nnUNet_preprocessed="~/Projects/ML-Quiz-3DMedImg/nnUNetData/nnUNet_preprocessed"

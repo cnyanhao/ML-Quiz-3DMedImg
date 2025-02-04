@@ -129,3 +129,14 @@ We achieve the following performance on the provided ML-Quiz-3DMedImg data
 
 ## Inference
 
+1. Run the following command to conduct inference on the test set
+    ```bash
+    nnUNetv2_predict \
+        -i ./nnUNetData/nnUNet_raw/Dataset101_Pancreas/imagesTs \
+        -o ./nnUNetData/nnUNet_results/Dataset101_Pancreas/nnUNetTrainer__nnUNetResEncUNetMPlans__3d_fullres/fold_0/test \
+        -d 101 \
+        -p nnUNetResEncUNetMPlans \
+        -chk checkpoint_best.pth \
+        -c 3d_fullres \
+        -f 0
+    ```

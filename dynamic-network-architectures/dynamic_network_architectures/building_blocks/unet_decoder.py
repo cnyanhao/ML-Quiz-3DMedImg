@@ -109,7 +109,6 @@ class UNetDecoder(nn.Module):
             x = self.transpconvs[s](lres_input)
             x = torch.cat((x, skips[-(s+2)]), 1)
             x = self.stages[s](x)
-            import pdb; pdb.set_trace()
             if self.deep_supervision:
                 seg_outputs.append(self.seg_layers[s](x))
             elif s == (len(self.stages) - 1):

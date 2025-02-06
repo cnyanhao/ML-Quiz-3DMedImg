@@ -20,12 +20,14 @@ This repository is my implementation of ML-Quiz-3DMedImg.
     ```bash
     cd nnUNet
     pip install -e .
+    cd ..
     ```
 
 3. Install modified dynamic-network-architectures:
     ```bash
     cd dynamic-network-architectures
     pip install -e .
+    cd ..
     ```
 
 4. Install nibabel for label cleaning:
@@ -56,7 +58,7 @@ This repository is my implementation of ML-Quiz-3DMedImg.
     python prepare_nnunet.py
     ```
 
-3. Create a new file named `dataset.json` under the folder `nnUNetData/nnUNet_raw/Dataset101_Pancreas`
+3. Create a new file named `dataset.json` under the folder `nnUNetData/nnUNet_raw/Dataset101_Pancreas` with the following content:
     ```json
     {
         "channel_names": {

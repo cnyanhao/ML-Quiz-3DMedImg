@@ -1011,13 +1011,13 @@ class nnUNetTrainer(object):
         # If the device_type is 'mps' then it will complain that mps is not implemented, even if enabled=False is set. Whyyyyyyy. (this is why we don't make use of enabled=False)
         # So autocast will only be active if we have a cuda device.
         with autocast(self.device.type, enabled=True) if self.device.type == 'cuda' else dummy_context():
-            output, cls_output = self.network(data)
+            output = self.network(data)
             # del data
             if self.cls_only:
-                l = F.cross_entropy(cls_output, labels)
+                l = F.cross_entropy(output[-1], labels)
             else:
-                l = self.loss(output, target)
-                l += F.cross_entropy(cls_output, labels)
+                l = self.loss(output[:-1], target)
+                l += F.cross_entropy(output[-1], labels)
 
         if self.grad_scaler is not None:
             self.grad_scaler.scale(l).backward()
@@ -1067,10 +1067,10 @@ class nnUNetTrainer(object):
         # If the device_type is 'mps' then it will complain that mps is not implemented, even if enabled=False is set. Whyyyyyyy. (this is why we don't make use of enabled=False)
         # So autocast will only be active if we have a cuda device.
         with autocast(self.device.type, enabled=True) if self.device.type == 'cuda' else dummy_context():
-            output, cls_output = self.network(data)
+            output = self.network(data)
             del data
-            l = self.loss(output, target)
-            l += F.cross_entropy(cls_output, labels)
+            l = self.loss(output[:-1], target)
+            l += F.cross_entropy(output[-1], labels)
 
         # we only need the output with the highest output resolution (if DS enabled)
         if self.enable_deep_supervision:
@@ -1119,7 +1119,7 @@ class nnUNetTrainer(object):
             fn_hard = fn_hard[1:]
 
         # macro f1 for classification task
-        cls_preds = cls_output.argmax(1).cpu().numpy().tolist()
+        cls_preds = output[-1].argmax(1).cpu().numpy().tolist()
         cls_labels = labels.cpu().numpy().tolist()
         # import pdb; pdb.set_trace()
         # f1_macro = f1_score(labels.cpu().numpy(), cls_pred.cpu().numpy(), average='macro')

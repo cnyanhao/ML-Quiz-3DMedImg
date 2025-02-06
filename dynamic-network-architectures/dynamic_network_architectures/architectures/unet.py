@@ -126,7 +126,7 @@ class ResidualEncoderUNet(nn.Module):
         skips = self.encoder(x)
         cls_output = self.classifier(skips[-1].detach())
         seg_output = self.decoder(skips)
-        return seg_output, cls_output
+        return [seg_output, cls_output]
 
     def compute_conv_feature_map_size(self, input_size):
         assert len(input_size) == convert_conv_op_to_dim(self.encoder.conv_op), "just give the image size without color/feature channels or " \
